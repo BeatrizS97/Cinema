@@ -1,8 +1,14 @@
+<div align="center">
+
+<img src="https://github.com/user-attachments/assets/dd53a361-a328-4826-b7f6-e457224b6354" alt="Banner Cinema de Terror" width="100%"/>
+
 # 🎬 Cinema de Terror  
 
 ![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-red?style=for-the-badge)  
 ![Tech](https://img.shields.io/badge/Feito%20com-HTML%20%7C%20SCSS%20%7C%20JS-black?style=for-the-badge)  
 ![License](https://img.shields.io/badge/Licença-MIT-green?style=for-the-badge)  
+
+</div>
 
 ---
 
@@ -16,12 +22,15 @@ Uma página temática de **cinema de terror** com **animações, efeitos visuais
 
 ---
 
+<div align="center">
+
 ## 🖼️ Preview  
 
 ✨ Veja abaixo um exemplo em execução:  
 
-![Preview do Projeto](<img width="1365" height="818" alt="Captura de tela 2025-09-25 105954" src="https://github.com/user-attachments/assets/dd53a361-a328-4826-b7f6-e457224b6354" />)
+<img src="https://github.com/user-attachments/assets/dd53a361-a328-4826-b7f6-e457224b6354" alt="Preview do Projeto" width="80%"/>
 
+</div>
 
 ---
 
@@ -90,6 +99,8 @@ index.html
 Este projeto está sob a licença **MIT** – sinta-se à vontade para usar, estudar e contribuir!  
 
 ---
+<div align="center">
 
 👩‍💻 Criado por [Beatriz Silva](https://www.linkedin.com/in/beatriz-silva-santos-419339235/)  
 
+</div>
