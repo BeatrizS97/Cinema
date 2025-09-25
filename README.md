@@ -20,8 +20,7 @@ Uma página temática de **cinema de terror** com **animações, efeitos visuais
 
 ✨ Veja abaixo um exemplo em execução:  
 
-![Preview do Projeto](<img width="1365" height="818" alt="Captura de tela 2025-09-25 105954" src="https://github.com/user-attachments/assets/5ba32b7d-e7f8-422f-8867-d93e9299d61f" />
-/demo.gif)  
+![Preview do Projeto](<img width="1365" height="818" alt="Captura de tela 2025-09-25 105954" src="https://github.com/user-attachments/assets/5ba32b7d-e7f8-422f-8867-d93e9299d61f")
 
 ---
 
@@ -82,7 +81,6 @@ index.html
 |--------------------|------------------|--------------------|
 | ![blood](https://media.giphy.com/media/l41lZxzroU33typuU/giphy.gif) | ![cards](https://media.giphy.com/media/3oEjHGr1Y9sL5P5h7W/giphy.gif) | ![modal](https://media.giphy.com/media/xTiN0CNHgoRf1Ha7CM/giphy.gif) |
 
-> 💡 *Você pode substituir os GIFs de exemplo por gravações reais do seu projeto para deixar mais personalizado.*  
 
 ---
 
@@ -94,6 +92,3 @@ Este projeto está sob a licença **MIT** – sinta-se à vontade para usar, est
 
 👩‍💻 Criado por [Beatriz Silva](https://www.linkedin.com/in/beatriz-silva-santos-419339235/)  
 
-
- ┃ ┗ demo.gif / imagens
- ┗ 📜 README.md
