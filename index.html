@@ -1,18 +1,81 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cinema</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cinema - Vai na Web</title> <!-- Mantido o título da página para SEO e clareza -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Mantido Google Fonts para fontes góticas: 'Cinzel' para títulos principais e 'Crimson Text' para subtítulos -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text:ital@0;1&display=swap"
+    rel="stylesheet">
+  <!-- Adicionado outra fonte para animação de troca de fonte nos títulos dos cards, como 'Creepster' para efeito de susto/ilusão -->
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <!-- Git init: Inicializa um repositório Git em um diretório, transformando ele em um projeto com controle de versão 
-         Git add: Adiciona arquivos ao índice (staging area) para serem incluídos no próximo commit
-         Git commit: Ele é usado para salvar e rastrear alterações em uma base de código 
-    
-         Git add, Git commit e Git push são comandos usados em sequência para salvar e enviar alterações de código para um repositório remoto.
+  <!-- Git init: Inicializa um repositório Git em um diretório, transformando ele em um projeto com controle de versão 
+       Git add: Adiciona arquivos ao índice (staging area) para serem incluídos no próximo commit 
+       Git commit: Ele é usado para salvar e rastrear alterações em uma base de código 
+       Git add ., Git commit -m e Git push são comandos usados em sequência para salvar e enviar alterações de código para um repositório remoto.
     -->
-    <header>
-        <h1>Bem-vindo ao Cinema - Vai na Web</h1>
+  <header>
+    <!-- Título principal e subtítulo mantidos, com tremor ajustado para sincronizar com cards -->
+    <h1 class="titulo-principal">Filmes de Terror</h1>
+    <h2 class="subtitulo">Bem-vindo ao Lado Sombrio</h2>
+    <!-- Container para gotas de sangue movido para baixo do h2, para simular escorrimento a partir dele -->
+    <div id="blood-drops-container" class="blood-drops-container"></div>
+  </header>
+  <main>
+    <!-- É o conteúdo principal da página -->
+    <!-- Card -->
+    <!-- Cada card com animação de entrada individual com delay para efeito de cascata -->
+    <div class="card" style="animation-delay: 0.2s;">
+      <div class="image-wrapper">
+        <img
+          src="https://cinebuzz.com.br/wp-content/uploads/2025/09/Numeros-de-bilheteria-sao-atualizados-e-Invocacao-do-Mal-4-confirma-recorde-historico.jpg"
+          alt="Imagem do Filme: Invocação do Mal 4"
+          data-original="https://cinebuzz.com.br/wp-content/uploads/2025/09/Numeros-de-bilheteria-sao-atualizados-e-Invocacao-do-Mal-4-confirma-recorde-historico.jpg"
+          data-alternative="https://img.odcdn.com.br/wp-content/uploads/2025/09/invocacao-do-mal-4-1-1024x576.jpg">
+      </div>
+      <h3>Invocação do Mal 4</h3>
+      <p class="slogan">O mal desperta na escuridão.</p>
+      <button class="btn-comprar">Compre seu ingresso</button>
+    </div>
+    <div class="card" style="animation-delay: 0.4s;">
+      <div class="image-wrapper">
+        <img src="https://br.web.img3.acsta.net/pictures/21/10/13/21/56/4755833.jpg" alt="Imagem do Filme: Pânico 5"
+          data-original="https://br.web.img3.acsta.net/pictures/21/10/13/21/56/4755833.jpg"
+          data-alternative="https://w0.peakpx.com/wallpaper/375/379/HD-wallpaper-scream-5-panic-panico-panico-5-todo-mundo-em-panico.jpg">
+      </div>
+      <h3>Pânico 5</h3>
+      <p class="slogan">Um novo Ghostface retorna a Woodsboro — e ninguém está seguro.</p>
+      <button class="btn-comprar">Compre seu ingresso</button>
+    </div>
+    <div class="card" style="animation-delay: 0.6s;">
+      <div class="image-wrapper">
+        <img src="https://br.web.img3.acsta.net/pictures/18/06/14/13/11/1751062.jpg" alt="Imagem do Filme: Hereditário"
+          data-original="https://br.web.img3.acsta.net/pictures/18/06/14/13/11/1751062.jpg"
+          data-alternative="https://pm1.aminoapps.com/6832/a285215bb5217c45c923a86144df666143322fb6v2_hq.jpg">
+      </div>
+      <h3>Hereditário</h3>
+      <p class="slogan">Segredos de família revelam um destino macabro e inevitável.</p>
+      <button class="btn-comprar">Compre seu ingresso</button>
+    </div>
+    <!-- CSS → é a linguagem padrão de estilo para páginas web. Sintaxe simples, mas sem recursos avançados (ex.: variáveis, funções, aninhamento). 
+         SASS/SCSS → são pré-processadores de CSS. Eles adicionam recursos que o CSS puro não tem (variáveis, mixins, herança, nesting). 
+         SASS (indented syntax) → usa indentação em vez de {} e ;. Sintaxe mais "limpa", mas menos parecida com CSS. SCSS (Sassy CSS) → é a sintaxe mais usada hoje. Parece quase idêntica ao CSS, mas aceita todos os recursos do SASS. -->
+  </main>
+  <footer>
+    <p>&copy; 2025 Cinema de Terror. Todos os direitos reservados. Prepare-se para o medo.</p>
+  </footer>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Ingresso comprado com sucesso! Prepare-se para o terror...</p>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
+
 </html>
