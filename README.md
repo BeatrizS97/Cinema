@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="https://github.com/user-attachments/assets/dd53a361-a328-4826-b7f6-e457224b6354" alt="Banner Cinema de Terror" width="100%"/>
-
 # 🎬 Cinema de Terror  
 
 ![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-red?style=for-the-badge)  
