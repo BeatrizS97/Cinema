@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text:ital@0;1&display=swap"
     rel="stylesheet">
   <!-- Adicionado outra fonte para animação de troca de fonte nos títulos dos cards, como 'Creepster' para efeito de susto/ilusão -->
-  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -20,12 +20,41 @@
        Git add ., Git commit -m e Git push são comandos usados em sequência para salvar e enviar alterações de código para um repositório remoto.
     -->
   <header>
-    <!-- Título principal e subtítulo mantidos, com tremor ajustado para sincronizar com cards -->
-    <h1 class="titulo-principal">Filmes de Terror</h1>
-    <h2 class="subtitulo">Bem-vindo ao Lado Sombrio</h2>
+    <!-- Menu aprimorado: Topbar com navegação horizontal centralizada, animação de fade e slide no hover para consistência com tema de terror -->
+    <nav class="topbar">
+      <ul class="menu">
+        <li><a href="#"><span class="letter">I</span><span class="letter">n</span><span class="letter">í</span><span
+              class="letter">c</span><span class="letter">i</span><span class="letter">o</span></a></li>
+        <li><a href="#"><span class="letter">F</span><span class="letter">i</span><span class="letter">l</span><span
+              class="letter">m</span><span class="letter">e</span><span class="letter">s</span></a></li>
+        <li><a href="#"><span class="letter">C</span><span class="letter">o</span><span class="letter">n</span><span
+              class="letter">t</span><span class="letter">a</span><span class="letter">t</span><span
+              class="letter">o</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Seção hero com banner aprimorado, titulo e subtitulo -->
+  <section class="hero">
+    <!-- Banner responsivo aprimorado para promover o cinema de terror, com movimento parallax e efeitos de terror -->
+    <div class="banner">
+      <div class="banner-overlay"></div>
+      <img
+        src="https://png.pngtree.com/background/20210711/original/pngtree-hand-drawn-style-horror-halloween-bloodstains-banner-background-picture-image_1152180.jpg"
+        alt="Banner de Cinema de Terror - Entre no Mundo Sombrio">
+      <div class="banner-title">
+        <h1 class="titulo-principal"><span class="letter">F</span><span class="letter">i</span><span
+            class="letter">l</span><span class="letter">m</span><span class="letter">e</span><span
+            class="letter">s</span> <span class="letter">d</span><span class="letter">e</span> <span
+            class="letter">T</span><span class="letter">e</span><span class="letter">r</span><span
+            class="letter">r</span><span class="letter">o</span><span class="letter">r</span></h1>
+        <h2 class="subtitulo">Bem-vindo ao Lado Sombrio</h2>
+      </div>
+    </div>
     <!-- Container para gotas de sangue movido para baixo do h2, para simular escorrimento a partir dele -->
     <div id="blood-drops-container" class="blood-drops-container"></div>
-  </header>
+  </section>
+
   <main>
     <!-- É o conteúdo principal da página -->
     <!-- Card -->

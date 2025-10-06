@@ -24,6 +24,8 @@ $cor-particula: #7A0000; // Vermelho mais escuro para gotas, simulando sangue co
 $fonte-principal: 'Cinzel', serif; // Fonte gótica para títulos
 $fonte-secundaria: 'Crimson Text', serif; // Fonte clássica para textos
 $fonte-susto: 'Creepster', cursive; // Fonte de terror para animação de troca
+$fonte-menu: 'Cinzel', serif; // Fonte alterada para a mesma do h1, bonita e gótica
+$fonte-banner: 'Cinzel', serif; // Mesma fonte para harmonia no banner, alterada para consistência
 
 /* Body: Fundo com gradiente radial, névoa e vinheta */
 body {
@@ -34,9 +36,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 20px;
+  padding: 0 20px 40px; // Removido padding-top para menu rente ao topo
   position: relative;
-  animation: backgroundPulse 10s infinite alternate;
+  animation: backgroundPulse 10s infinite alternate ease-in-out; // Aumentada fluidez com ease-in-out
 
   &::before {
     content: '';
@@ -63,15 +65,388 @@ body {
   }
 }
 
-/* Container para gotas de sangue, posicionado abaixo do h2 */
+/* Menu aprimorado: Topbar com navegação horizontal centralizada, animação de fade e slide no hover para consistência com tema de terror. Fonte alterada para Cinzel com capitalize. Estética de terror aprimorada com bordas irregulares sutis, glow vermelho e animações de "sangue escorrendo" mais intensas. */
+.topbar {
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), rgba(139, 0, 0, 0.3));
+  padding: 6px 0; // Aumentado padding para mais espaço elegante
+  box-shadow: 0 4px 15px $cor-sombra, inset 0 0 25px rgba($cor-acento, 0.15); // Sombra mais profunda e interna para elegância
+  z-index: 100;
+  position: sticky; // Fixa no topo ao rolar
+  top: 0;
+  backdrop-filter: blur(15px); // Efeito de desfoque mais intenso para profundidade
+  border-bottom: 3px solid $cor-acento;
+  border-image: linear-gradient(to right, transparent, $cor-acento, transparent) 1; // Bordas irregulares para estética de terror
+  animation: flicker 10s infinite ease-in-out, shadowCreep 8s infinite linear; // Adicionado shadowCreep para movimento sutil
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px; // Aumentado gap para mais elegância
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeInUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards, float 7s ease-in-out infinite 1.2s, ghostDrift 12s infinite ease-in-out 2s; // Adicionado ghostDrift para movimento fantasmagórico
+
+  // Animação contínua de flutuação sutil para interatividade
+}
+
+.menu li:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.menu li:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.menu li:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+.menu a {
+  color: $cor-texto;
+  text-decoration: none;
+  font-family: $fonte-menu; // Fonte Cinzel, bonita como h1
+  font-size: 1.1em; // Aumentado para mais impacto
+  text-transform: capitalize; // Apenas primeira letra maiúscula, como solicitado
+  letter-spacing: 2px; // Aumentado para elegância
+  padding: 10px 18px; // Padding maior para botões mais elegantes
+  border-radius: 10px; // Bordas mais arredondadas
+  display: block;
+  font-weight: bold;
+  transition: color 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); // Transição simplificada apenas para cor, removidas outras para foco na nova animação de gotejamento
+  position: relative;
+  z-index: 2;
+
+  .letter {
+    display: inline-block;
+    position: relative;
+    transition: all 0.5s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%) scaleY(0) translateY(0);
+      width: 3px;
+      height: 12px;
+      background: linear-gradient(to bottom, transparent 0%, $cor-particula 50%, $cor-acento 100%);
+      border-radius: 0 0 2px 2px;
+      opacity: 0;
+      z-index: -1;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    .letter {
+      color: $cor-particula;
+      animation: letterDrip 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+
+      &:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      &:nth-child(2) {
+        animation-delay: 0.05s;
+      }
+
+      &:nth-child(3) {
+        animation-delay: 0.1s;
+      }
+
+      &:nth-child(4) {
+        animation-delay: 0.15s;
+      }
+
+      &:nth-child(5) {
+        animation-delay: 0.2s;
+      }
+
+      &:nth-child(6) {
+        animation-delay: 0.25s;
+      }
+
+      &:nth-child(7) {
+        animation-delay: 0.3s;
+      }
+
+      &::after {
+        animation: dropDrip 1s ease-out 0.6s forwards;
+      }
+    }
+  }
+}
+
+/* Banner aprimorado: Altura reduzida para não ficar comprido, com vh ajustado. Título e subtítulo posicionados no topo do banner. Efeito translúcido adicionado: overlay mais transparente para destacar a imagem no fundo e realçar o título. */
+.banner {
+  width: 100%;
+  height: 30vh; // Reduzida altura para corrigir comprimento excessivo
+  min-height: 200px; // Ajustado mínimo
+  max-height: 300px; // Máximo reduzido
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 25px;
+  border-radius: 15px; // Bordas mais arredondadas para beleza
+  box-shadow: 0 8px 30px $cor-sombra, inset 0 0 30px rgba($cor-acento, 0.15); // Sombra mais profunda
+  animation: bannerFadeIn 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s, shadowCreep 10s infinite linear, parallaxShift 20s infinite ease-in-out; // Adicionado parallaxShift para movimento
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.05), rgba(139, 0, 0, 0.02)); // Reduzida opacidade ainda mais para efeito translúcido mais intenso, imagem mais clara
+    z-index: 2; // Aumentado z-index para cobrir imagem
+    animation: overlayPulse 5s infinite alternate ease-in-out, ghostFade 15s infinite ease-in-out;
+  }
+
+  .banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 60%, rgba(0, 0, 0, 0.08) 100%); // Aumentado transparência no centro para destacar título e imagem
+    z-index: 1;
+    animation: rippleTerror 8s infinite ease-in-out; // Adicionado ripple para movimento ondulante como ondas de terror
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // Voltado para cover para preencher sem ficar pequeno
+    object-position: center; // Centralizado para evitar corte importante
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); // Transição fluida
+    filter: grayscale(15%) contrast(1.1); // Reduzido filtro para imagem mais clara
+    opacity: 0.5; // Ajustado para maior translucidez (de 0.7 para 0.5)
+    z-index: 0;
+
+    // Nova animação avançada: Distortion como TV velha em filme de terror + movimento parallax
+    animation: tvStatic 25s infinite ease-in-out, subtlePan 15s infinite linear;
+  }
+
+  .banner-title {
+    position: absolute;
+    top: 20px; // Posicionado no topo do banner, como solicitado
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 3;
+    color: $cor-texto;
+    text-shadow: 2px 2px 10px $cor-sombra;
+
+    .titulo-principal {
+      color: $cor-acento;
+      font-family: $fonte-principal;
+      font-size: 3em;
+      text-transform: capitalize; // Apenas a primeira letra maiúscula
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+      animation: fadeIn 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); // Removido pulse infinito para reduzir animação
+      text-shadow: 3px 3px 6px $cor-sombra;
+
+      &.tremble-active {
+        animation: tremble 0.1s infinite 40s; // Tremor ativado por 2.5s a cada 40s
+      }
+
+      .letter {
+        display: inline-block;
+        position: relative;
+        transition: all 0.5s ease;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -8px;
+          left: 50%;
+          transform: translateX(-50%) scaleY(0) translateY(0);
+          width: 4px;
+          height: 20px;
+          background: linear-gradient(to bottom, transparent 0%, $cor-particula 40%, $cor-acento 100%);
+          border-radius: 0 0 3px 3px;
+          opacity: 0;
+          z-index: -1;
+        }
+      }
+
+      &:hover {
+        .letter {
+          color: $cor-particula;
+          animation: meltDrip 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+
+          &:nth-child(1) {
+            animation-delay: 0s;
+          }
+
+          &:nth-child(2) {
+            animation-delay: 0.1s;
+          }
+
+          &:nth-child(3) {
+            animation-delay: 0.2s;
+          }
+
+          &:nth-child(4) {
+            animation-delay: 0.3s;
+          }
+
+          &:nth-child(5) {
+            animation-delay: 0.4s;
+          }
+
+          &:nth-child(6) {
+            animation-delay: 0.5s;
+          }
+
+          &:nth-child(7) {
+            animation-delay: 0.6s;
+          }
+
+          &:nth-child(8) {
+            animation-delay: 0.7s;
+          }
+
+          &:nth-child(9) {
+            animation-delay: 0.8s;
+          }
+
+          &:nth-child(10) {
+            animation-delay: 0.9s;
+          }
+
+          &:nth-child(11) {
+            animation-delay: 1s;
+          }
+
+          &:nth-child(12) {
+            animation-delay: 1.1s;
+          }
+
+          &:nth-child(13) {
+            animation-delay: 1.2s;
+          }
+
+          &::after {
+            animation: meltDrop 1.2s ease-out 0.8s forwards;
+          }
+        }
+      }
+
+      @media (max-width: 768px) {
+        font-size: 2.2em;
+        letter-spacing: 2px;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 1.8em;
+      }
+    }
+
+    .subtitulo {
+      color: $cor-subtitulo;
+      font-size: 1.5em;
+      font-style: italic;
+      animation: fadeIn 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s; // Removido glow infinito para reduzir animação
+      text-shadow: 1px 1px 3px $cor-sombra;
+
+      @media (max-width: 768px) {
+        font-size: 1.2em;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 1em;
+      }
+    }
+  }
+
+  &:hover {
+    img {
+      transform: scale(1.05) rotate(1deg); // Escala e rotação sutil para movimento
+      filter: grayscale(5%) contrast(1.15) brightness(1.05); // Imagem ainda mais clara no hover
+      opacity: 0.6; // Aumenta opacidade ligeiramente no hover para contraste (de 0.8 para 0.6, mantendo translucidez)
+    }
+
+    .banner-title {
+      animation: glow 2s infinite alternate;
+    }
+  }
+
+  @media (max-width: 768px) {
+    height: 25vh;
+    min-height: 180px;
+    border-radius: 10px;
+
+    .banner-title {
+      top: 15px;
+
+      .titulo-principal {
+        font-size: 2.2em;
+      }
+
+      .subtitulo {
+        font-size: 1.2em;
+      }
+
+      img {
+        object-position: center top; // Foca no topo em telas menores
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    height: 20vh;
+    min-height: 150px;
+    margin-bottom: 20px;
+
+    .banner-title {
+      top: 10px;
+
+      .titulo-principal {
+        font-size: 1.8em;
+      }
+
+      .subtitulo {
+        font-size: 1em;
+      }
+    }
+  }
+}
+
+/* Seção hero: Contém o banner, título e subtítulo com estilos do antigo header. Ajustado para não ter padding extra já que títulos estão no banner. */
+.hero {
+  width: 100%;
+  text-align: center;
+  padding: 0; // Removido padding para títulos ficarem rente no banner
+  background-color: rgba(0, 0, 0, 0.8); // Fundo cinza escuro para as gotas escorrerem
+  box-shadow: 0 6px 15px $cor-sombra;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Container para gotas de sangue ajustado: Posicionado para começar atrás do banner e cair até o final da página, z-index negativo para ficar atrás de tudo. */
 .blood-drops-container {
   position: absolute;
-  top: calc(100% + 10px); // Posiciona logo abaixo do subtítulo (h2)
+  top: -30vh; // Inicia no topo do banner (altura do banner: 30vh)
   left: 0;
   width: 100%;
-  height: calc(100vh - 100px); // Extende até o fundo da página
+  height: calc(130vh + 100px); // Extende do banner até além do footer para cobrir toda a página
   pointer-events: none;
-  z-index: 0; // Abaixo do conteúdo do header
+  z-index: -1; // Atrás de todos os elementos para simular queda por trás
 }
 
 /* Estilo para gotas de sangue, com aparência de lágrima vermelha */
@@ -98,41 +473,6 @@ body {
   }
 }
 
-/* Header: Título com tremor sincronizado, subtítulo com glow */
-header {
-  width: 100%;
-  text-align: center;
-  padding: 30px 0;
-  background-color: rgba(0, 0, 0, 0.8); // Fundo cinza escuro para as gotas escorrerem
-  box-shadow: 0 6px 15px $cor-sombra;
-  margin-bottom: 60px;
-  position: relative;
-  z-index: 1;
-
-  .titulo-principal {
-    color: $cor-acento;
-    font-family: $fonte-principal;
-    font-size: 3em;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    animation: pulse 2s infinite alternate, fadeIn 1.5s ease-in-out; // Tremor agora controlado por classe
-    text-shadow: 3px 3px 6px $cor-sombra;
-
-    &.tremble-active {
-      animation: tremble 0.1s infinite 40s; // Tremor ativado por 2.5s a cada 40s
-    }
-  }
-
-  .subtitulo {
-    color: $cor-subtitulo;
-    font-size: 1.5em;
-    font-style: italic;
-    margin-top: 10px;
-    animation: fadeIn 2s ease-in-out 0.5s, glow 3s infinite alternate;
-    text-shadow: 1px 1px 3px $cor-sombra;
-  }
-}
-
 /* Main: Grid para cards responsivos */
 main {
   display: grid;
@@ -140,9 +480,14 @@ main {
   gap: 40px;
   max-width: 1200px;
   width: 100%;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
 }
 
-/* Cards: Com animação de entrada, hover com glow e overlay de sangue */
+/* Cards: Com animação de entrada individual com delay para efeito de cascata */
 .card {
   background-color: #1c1c1c;
   border: 2px solid $cor-acento;
@@ -150,8 +495,8 @@ main {
   padding: 25px;
   text-align: center;
   box-shadow: 0 10px 25px $cor-sombra;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  animation: slideUp 1s ease-out forwards;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); // Fluidez
+  animation: slideUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; // Animação mais fluida
   opacity: 0;
   position: relative;
   overflow: hidden;
@@ -175,8 +520,8 @@ main {
       width: 100%;
       height: 100%;
       background: linear-gradient(to bottom, rgba($cor-acento, 0.4), transparent);
-      transition: top 0.5s ease;
-      z-index: 1;
+      transition: top 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); // Fluidez
+      z-index: 2;
     }
 
     &:hover::before {
@@ -187,11 +532,19 @@ main {
       width: 100%;
       height: 400px;
       object-fit: cover;
-      transition: filter 0.4s ease, transform 0.4s ease;
+      transition: filter 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); // Fluidez
       display: block;
 
       &.monster-jump {
         animation: monsterJump 2.5s ease-in-out; // Animação de "salto" do monstro
+      }
+
+      @media (max-width: 768px) {
+        height: 300px;
+      }
+
+      @media (max-width: 480px) {
+        height: 250px;
       }
     }
 
@@ -207,7 +560,11 @@ main {
     font-size: 1.6em;
     margin-bottom: 10px;
     text-shadow: 2px 2px 5px $cor-sombra;
-    animation: textGlow 2s infinite alternate, fontIllusion 40s infinite alternate; // Ajustado para 40s
+    animation: textGlow 2s infinite alternate ease-in-out, fontIllusion 40s infinite alternate ease-in-out; // Fluidez
+
+    @media (max-width: 768px) {
+      font-size: 1.4em;
+    }
   }
 
   .slogan {
@@ -228,12 +585,13 @@ main {
     border-radius: 8px;
     cursor: pointer;
     font-size: 1.1em;
-    transition: background-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+    transition: background-color 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); // Fluidez
 
     &:hover {
       background-color: darken($cor-acento, 15%);
       transform: translateY(-5px) scale(1.05) rotate(2deg);
       box-shadow: 0 5px 15px rgba($cor-acento, 0.7);
+      animation: buttonScream 0.5s ease-in-out; // Fluidez
     }
   }
 }
@@ -247,8 +605,13 @@ footer {
   margin-top: auto;
   font-size: 0.9em;
   color: $cor-subtitulo;
-  animation: fadeIn 2.5s ease-in-out, pulse 4s infinite alternate;
+  animation: fadeIn 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), pulse 4s infinite alternate ease-in-out; // Fluidez
   box-shadow: 0 -4px 10px $cor-sombra;
+
+  @media (max-width: 480px) {
+    font-size: 0.8em;
+    padding: 15px 0;
+  }
 }
 
 /* Modal: Com scale in e tremor */
@@ -275,7 +638,13 @@ footer {
     border-radius: 15px;
     text-align: center;
     box-shadow: 0 6px 20px $cor-sombra;
-    animation: scaleIn 0.5s ease-out, tremble 0.2s 0.5s;
+    animation: scaleIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), tremble 0.2s 0.5s, bloodSplatter 3s infinite 1s ease-in-out; // Fluidez
+
+    @media (max-width: 480px) {
+      width: 95%;
+      margin: 10% auto;
+      padding: 20px;
+    }
 
     .close {
       color: $cor-texto;
@@ -286,14 +655,18 @@ footer {
 
       &:hover {
         color: $cor-acento;
-        animation: spin 0.5s ease;
+        animation: spin 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); // Fluidez
       }
     }
 
     p {
       font-size: 1.3em;
       text-shadow: 1px 1px 3px $cor-sombra;
-      animation: textGlow 1.5s infinite alternate;
+      animation: textGlow 1.5s infinite alternate ease-in-out; // Fluidez
+
+      @media (max-width: 480px) {
+        font-size: 1.1em;
+      }
     }
   }
 }
@@ -427,13 +800,13 @@ footer {
     opacity: 0.9;
   }
 
-  // Começa abaixo do h2
+  // Começa no topo do banner e cai até o final da página
   100% {
-    transform: translateY(calc(100vh - 120px));
+    transform: translateY(calc(130vh));
     opacity: 0.3;
   }
 
-  // Cai até próximo ao footer
+  // Ajustado para cair mais longe
 }
 
 @keyframes fontIllusion {
@@ -475,3 +848,332 @@ footer {
     filter: brightness(1);
   }
 }
+
+/* Nova animação para o menu: Efeito de gotejamento de sangue no hover, mais elegante e lento */
+@keyframes bloodDrip {
+  0% {
+    transform: translateX(-50%) scaleY(0) translateY(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateX(-50%) scaleY(1) translateY(5px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-50%) scaleY(2) translateY(15px);
+    opacity: 0;
+  }
+}
+
+// Animação para letras sangrando como sangue no menu: cada letra alonga-se verticalmente e borra levemente para simular sangramento, sem movimento de posição, como em um filme de terror
+@keyframes letterDrip {
+  0% {
+    transform: scale(1, 1);
+    text-shadow: 0 0 0 rgba($cor-particula, 0);
+    color: $cor-acento;
+  }
+
+  50% {
+    transform: scale(0.98, 1.1);
+    text-shadow: 0 0 8px rgba($cor-particula, 0.4);
+    color: mix($cor-acento, $cor-particula, 50%);
+  }
+
+  100% {
+    transform: scale(0.95, 1.3);
+    text-shadow: 0 0 12px rgba($cor-particula, 0.8), 0 0 20px rgba($cor-acento, 0.6);
+    color: $cor-particula;
+  }
+}
+
+// Animação para a gota de sangue caindo de cada letra, simulando escorrimento realista
+@keyframes dropDrip {
+  0% {
+    transform: translateX(-50%) scaleY(0) translateY(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateX(-50%) scaleY(1) translateY(8px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-50%) scaleY(1.5) translateY(20px);
+    opacity: 0;
+  }
+}
+
+// Animação para o título derretendo como sangue: cada letra "derrete" alongando-se verticalmente e borrando levemente para simular derretimento em sangue sem movimento de posição, como em um filme de terror
+@keyframes meltDrip {
+  0% {
+    transform: scale(1, 1);
+    text-shadow: 0 0 0 rgba($cor-particula, 0);
+    color: $cor-acento;
+  }
+
+  50% {
+    transform: scale(0.98, 1.1);
+    text-shadow: 0 0 8px rgba($cor-particula, 0.4);
+    color: mix($cor-acento, $cor-particula, 50%);
+  }
+
+  100% {
+    transform: scale(0.95, 1.3);
+    text-shadow: 0 0 12px rgba($cor-particula, 0.8), 0 0 20px rgba($cor-acento, 0.6);
+    color: $cor-particula;
+  }
+}
+
+// Animação para a gota de derretimento caindo do título, simulando sangue derretido escorrendo
+@keyframes meltDrop {
+  0% {
+    transform: translateX(-50%) scaleY(0) translateY(0);
+    opacity: 0;
+  }
+
+  30% {
+    transform: translateX(-50%) scaleY(0.8) translateY(6px);
+    opacity: 1;
+  }
+
+  70% {
+    transform: translateX(-50%) scaleY(1.2) translateY(15px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-50%) scaleY(1.5) translateY(25px);
+    opacity: 0;
+  }
+}
+
+/* Flicker: Simula luz piscando irregularmente, como em uma casa abandonada */
+@keyframes flicker {
+
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    opacity: 1;
+  }
+
+  20%,
+  24%,
+  55% {
+    opacity: 0.4;
+  }
+}
+
+/* Shadow Creep: Sombra que rasteja lentamente pela borda, criando tensão */
+@keyframes shadowCreep {
+  0% {
+    box-shadow: 0 5px 20px $cor-sombra;
+  }
+
+  50% {
+    box-shadow: 5px 5px 20px $cor-sombra, -5px -5px 20px rgba($cor-acento, 0.3);
+  }
+
+  100% {
+    box-shadow: 0 5px 20px $cor-sombra;
+  }
+}
+
+/* Ghost Fade: Fade in/out sutil como um fantasma aparecendo/desaparecendo */
+@keyframes ghostFade {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: translateY(-5px);
+  }
+}
+
+/* TV Static: Efeito de estática na imagem, como interferência em TV antiga de terror */
+@keyframes tvStatic {
+
+  0%,
+  90%,
+  100% {
+    filter: grayscale(15%) contrast(1.1); // Ajustado para imagem mais clara
+  }
+
+  95% {
+    filter: grayscale(40%) contrast(1.4) brightness(0.8); // Reduzida intensidade
+  }
+}
+
+/* Button Scream: Distorção rápida no botão como um grito, com escala e rotação irregular */
+@keyframes buttonScream {
+  0% {
+    transform: translateY(-5px) scale(1.05);
+  }
+
+  25% {
+    transform: translateY(-10px) scale(1.1) skew(5deg);
+  }
+
+  50% {
+    transform: translateY(-5px) scale(1.05) skew(-3deg);
+  }
+
+  75% {
+    transform: translateY(-8px) scale(1.08) skew(2deg);
+  }
+
+  100% {
+    transform: translateY(-5px) scale(1.05);
+  }
+}
+
+/* Blood Splatter: Simula salpicos de sangue aleatórios no modal */
+@keyframes bloodSplatter {
+  0% {
+    background: #282828;
+  }
+
+  10% {
+    background: linear-gradient(45deg, #282828 80%, $cor-acento 20%);
+  }
+
+  20% {
+    background: #282828;
+  }
+
+  30% {
+    background: linear-gradient(-45deg, #282828 70%, $cor-particula 30%);
+  }
+
+  100% {
+    background: #282828;
+  }
+}
+
+/* FadeInUp: Animação de entrada com fade e slide up para o menu */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Float: Animação de flutuação sutil para o menu */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* GhostDrift: Movimento de deriva fantasmagórica para itens do menu */
+@keyframes ghostDrift {
+
+  0%,
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateX(-3px) rotate(-1deg);
+  }
+
+  75% {
+    transform: translateX(3px) rotate(1deg);
+  }
+}
+
+/* BannerFadeIn: Entrada suave do banner com scale */
+@keyframes bannerFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* OverlayPulse: Pulso no overlay do banner */
+@keyframes overlayPulse {
+  from {
+    opacity: 0.1; // Reduzida opacidade base para translucidez
+  }
+
+  to {
+    opacity: 0.3; // Máxima opacidade mais baixa para imagem clara
+  }
+}
+
+/* SubtlePan: Movimento panorâmico sutil na imagem do banner para parallax */
+@keyframes subtlePan {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-5%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* ParallaxShift: Shift de parallax para o container do banner */
+@keyframes parallaxShift {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-2%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* RippleTerror: Ondas de terror no overlay do banner, como perturbações sobrenaturais */
+@keyframes rippleTerror {
+  0% {
+    transform: scale(1);
+    opacity: 0.3; // Reduzida para translucidez
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.2; // Ainda mais transparente
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+}
+
+/* CSS → é a linguagem padrão de estilo para páginas web. Sintaxe simples, mas sem recursos avançados (ex.: variáveis, funções, aninhamento). 
+         SASS/SCSS → são pré-processadores de CSS. Eles adicionam recursos que o CSS puro não tem (variáveis, mixins, herança, nesting). 
+         SASS (indented syntax) → usa indentação em vez de {} e ;. Sintaxe mais "limpa", mas menos parecida com CSS. SCSS (Sassy CSS) → é a sintaxe mais usada hoje. Parece quase idêntica ao CSS, mas aceita todos os recursos do SASS. */
