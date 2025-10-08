@@ -33,7 +33,7 @@ body {
   color: $cor-texto;
   font-family: $fonte-secundaria;
   min-height: 100vh;
-  display: flex;
+  display: flex; // Flexbox para um layout flexível
   flex-direction: column;
   align-items: center;
   padding: 0 20px 40px; // Removido padding-top para menu rente ao topo
@@ -85,7 +85,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 28px; // Aumentado gap para mais elegância
+  gap: 28px; // Define o espaço entre elementos filhos tanto horizontal quanto verticalmente
   margin: 0;
   padding: 0;
 }
