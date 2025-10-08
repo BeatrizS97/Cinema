@@ -26,8 +26,8 @@ Uma página temática de **cinema de terror** com **animações, efeitos visuais
 
 ✨ Veja abaixo um exemplo em execução:  
 
-<img src="https://github.com/user-attachments/assets/dd53a361-a328-4826-b7f6-e457224b6354" alt="Preview do Projeto" width="80%"/>
-
+<img width="1772" height="859" alt="Captura de tela 2025-10-08 100634" src="https://github.com/user-attachments/assets/fb57fb9c-1b3b-492e-b755-f731e5c19ac6"
+ alt="Preview do Projeto" width="80%"/>
 </div>
 
 ---
